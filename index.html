@@ -70,20 +70,49 @@
 				</v-btn>
 
 
-				<v-toolbar-items>
-					<v-menu transition="slide-y-transition" bottom offset-y>	
-						<v-btn flat large slot="activator">
-							<v-avatar class="ico_off_txt" size="40px" style="margin-left: 15px;">
-								<img src="src/img/favicon.png" alt="ow_dev">
-							</v-avatar>
+				<v-toolbar-items >
+					<v-menu id="profil" transition="slide-y-transition" bottom offset-y :close-on-content-click="false">	
+						<v-btn id="profil" flat large slot="activator">
 
-							<strong>Administrateur</strong> 
+							<v-badge class="ico_off_txt" overlap>
+      							<span slot="badge">{{notif}}</span>
+								<v-avatar  size="40px" style="margin-left: 15px;">
+									<img src="src/img/favicon.png" alt="ow_dev">
+								</v-avatar>
+							</v-badge>
+							<strong>Shura</strong> 
+
 						</v-btn>
-						<v-list>
-					        <v-list-tile v-for="item in items" :key="item.title" @click="">
-					        	<v-list-tile-title>{{ item.title }}</v-list-tile-title>
-					        </v-list-tile>
-					    </v-list>
+						
+						<v-card>
+							<v-list>
+								<v-list-tile>
+									<v-list-tile-action>
+							            <v-switch v-model="cmod" color="secondary"></v-switch>
+							        </v-list-tile-action>
+							        <v-list-tile-sub-title v-if="!cmod">Day Mode</v-list-tile-sub-title>
+							        <v-list-tile-sub-title v-else>Night Mode</v-list-tile-sub-title>
+								</v-list-tile>
+								
+								<v-divider></v-divider>
+								
+								<v-list-tile>
+									<v-list-tile-action> 
+										<v-badge overlap>
+						                	<v-icon>mail</v-icon>
+						                	<span slot="badge">{{notif}}</span>
+						                </v-badge>
+						            </v-list-tile-action>
+						            <v-list-tile-content>
+						                <v-list-tile-sub-title>Notifications</v-list-tile-sub-title>
+						            </v-list-tile-content>
+								</v-list-tile>
+
+								<v-divider></v-divider>
+
+								<v-list-tile>Log Out</v-list-tile>
+						    </v-list>
+						</v-card>
 					</v-menu>
 				</v-toolbar-items>
 			</v-toolbar>

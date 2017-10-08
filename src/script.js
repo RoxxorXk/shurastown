@@ -6,14 +6,8 @@ new Vue({
 		seico: true,
 		testv:null,
 		fav: true,
-	    message: false,
-	    hints: true,
-	    items: [
-	      { title: 'Click Me' },
-	      { title: 'Click Me' },
-	      { title: 'Click Me' },
-	      { title: 'Click Me 2' }
-	    ]
+		cmod: true,
+		notif:69,
 	},
 	props: {
 		source: String,
