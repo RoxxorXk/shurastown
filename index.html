@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr" >
+
+<head>
+	<meta charset="UTF-8">
+	<title>Shura's Town</title>
+	<link rel="stylesheet" href="src/style.css">
+
+	<style href="src/style.css"></style>
+	<link rel="icon" type="image/png" href="src/img/favicon.png" />
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+	<link href="https://unpkg.com/vuetify/dist/vuetify.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="src/style.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">	
+
+	<meta property="og:url" content="http://shurastown.fr" />
+	<meta property="og:title" content="Shura's Town"/>
+	<meta property="og:description" content="Follow my world ;3"/>
+	<meta property="og:image" content="http://shurastown.fr/sources/banner.jpg"/>	
+</head>
+
+<body>
+	<div id="app">
+		<v-app dark id="inspire">
+			<v-navigation-drawer clipped persistent v-model="drawer" app>
+				<v-list dense>
+					<v-list-tile @click="">
+						<v-list-tile-action>
+							<v-icon>dashboard</v-icon>
+						</v-list-tile-action>
+
+						<v-list-tile-content>
+							<v-list-tile-title>Draws</v-list-tile-title>
+						</v-list-tile-content>
+					</v-list-tile>
+
+					<v-list-tile @click="">
+						<v-list-tile-action>
+							<v-icon>fa-plus</v-icon>
+						</v-list-tile-action>
+
+						<v-list-tile-content>
+							<v-list-tile-title>News</v-list-tile-title>
+						</v-list-tile-content>
+					</v-list-tile>
+
+					<v-list-tile @click="">
+						<v-list-tile-action >
+							<v-icon>fa-music</v-icon>
+						</v-list-tile-action>
+
+						<v-list-tile-content>
+							<v-list-tile-title>Music</v-list-tile-title>
+						</v-list-tile-content>
+					</v-list-tile>
+				</v-list>
+			</v-navigation-drawer>
+
+			<v-toolbar dark app fixed clipped-left>
+				<v-toolbar-side-icon class="s_offset" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+				<v-toolbar-title class="s_offset" class="white--text">Shura's Town</v-toolbar-title>
+				<v-spacer></v-spacer>
+				
+
+				<v-text-field append-icon="search" single-line hide-details @focusout="test" v-if="sbar" v-model="testv" autofocus></v-text-field>
+				<v-btn icon @click="test" v-if="seico">
+					<v-icon>search</v-icon>
+				</v-btn>
+
+
+				<v-toolbar-items>
+					<v-menu transition="slide-y-transition" bottom offset-y>	
+						<v-btn flat large slot="activator">
+							<v-avatar class="ico_off_txt" size="40px" style="margin-left: 15px;">
+								<img src="src/img/favicon.png" alt="ow_dev">
+							</v-avatar>
+
+							<strong>Administrateur</strong> 
+						</v-btn>
+						<v-list>
+					        <v-list-tile v-for="item in items" :key="item.title" @click="">
+					        	<v-list-tile-title>{{ item.title }}</v-list-tile-title>
+					        </v-list-tile>
+					    </v-list>
+					</v-menu>
+				</v-toolbar-items>
+			</v-toolbar>
+
+			<main>
+				<v-content>
+					<v-container fluid fill-height>
+						<div>{{ testv }}</div>
+					</v-container>
+				</v-content>
+			</main>
+
+			<v-footer class="pa-3 white--text" dark fixed>
+
+				<a href="https://www.facebook.com/ShuraMurasaki/" target="_blank"><v-icon id="fb" class="social_ico" large>fa-facebook</v-icon></a>
+				<a href="https://www.instagram.com/shura_murasaki/" target="_blank"><v-icon id="ig" class="social_ico" large>fa-instagram</v-icon></a>
+				<a href="https://shuraxpheles.deviantart.com/" target="_blank"><v-icon id="da" class="social_ico" large>fa-deviantart</v-icon></a>
+				<a href="https://soundcloud.com/" target="_blank"><v-icon id="sc" class="social_ico" large>fa-soundcloud</v-icon></a>
+
+				<div><strong>Follow us !</strong></div>
+				<v-spacer></v-spacer>
+
+				<v-avatar class="ico_off_txt" size="34px">
+					<img src="src/img/owl.png" alt="ow_dev">
+				</v-avatar>
+
+				<div id="creator"><strong><a href="http://owldev.fr" target="_blank">Power by Owl_Dev</a> - {{ new Date().getFullYear() }}</strong></div>
+			</v-footer>
+		</v-app>
+	</div>
+</body>
+
+<script src="https://unpkg.com/vue@2.4.4" ></script>
+<script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+<script src="src/script.js"></script>
+</html>
