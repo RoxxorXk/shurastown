@@ -55,6 +55,16 @@
 							<v-list-tile-title>Music</v-list-tile-title>
 						</v-list-tile-content>
 					</v-list-tile>
+
+					<v-list-tile @click="">
+						<v-list-tile-action >
+							<v-icon>fa-comments-o</v-icon>
+						</v-list-tile-action>
+
+						<v-list-tile-content>
+							<v-list-tile-title>Chat</v-list-tile-title>
+						</v-list-tile-content>
+					</v-list-tile>
 				</v-list>
 			</v-navigation-drawer>
 
@@ -70,7 +80,7 @@
 				</v-btn>
 
 
-				<v-toolbar-items >
+				<v-toolbar-items v-if="connect">
 					<v-menu id="profil" transition="slide-y-transition" bottom offset-y :close-on-content-click="false">	
 						<v-btn id="profil" flat large slot="activator">
 
@@ -110,10 +120,17 @@
 
 								<v-divider></v-divider>
 
-								<v-list-tile>Log Out</v-list-tile>
+								<v-list-tile>
+									<v-list-tile-sub-title>Log Out</v-list-tile-sub-title>
+									<v-list-tile-sub-title>My Account</v-list-tile-sub-title>
+								</v-list-tile>
 						    </v-list>
 						</v-card>
 					</v-menu>
+				</v-toolbar-items>
+
+				<v-toolbar-items v-else>
+
 				</v-toolbar-items>
 			</v-toolbar>
 

@@ -2,6 +2,7 @@ new Vue({
 	el: '#app',
 	data:{
 		drawer: false,
+		connect:true,
 		sbar:false,
 		seico: true,
 		testv:null,
