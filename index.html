@@ -121,8 +121,8 @@
 								<v-divider></v-divider>
 
 								<v-list-tile>
-									<v-list-tile-sub-title>Log Out</v-list-tile-sub-title>
-									<v-list-tile-sub-title>My Account</v-list-tile-sub-title>
+									<v-list-tile-sub-title><v-btn  id="profil" flat @click="connect = !connect">Log Out</v-btn></v-list-tile-sub-title>
+									<v-list-tile-sub-title><v-btn  id="profil" flat >My Account</v-btn></v-list-tile-sub-title>
 								</v-list-tile>
 						    </v-list>
 						</v-card>
@@ -130,7 +130,39 @@
 				</v-toolbar-items>
 
 				<v-toolbar-items v-else>
+					<v-menu transition="slide-y-transition" bottom offset-y :close-on-content-click="false">
+						<v-btn  id="profil" flat large slot="activator">
+								<strong id="profil">Sing Up</strong>
+								<strong id="profil">Sing in</strong>
+						</v-btn>
+						<v-card>
+							<v-list class="m-tdl">
+								<v-form>
+									<v-list-tile>
+										<v-text-field label="Nickname" required></v-text-field>
+									</v-list-tile>
 
+									<v-list-tile>
+										<v-text-field label="Password" required type="password"></v-text-field>
+									</v-list-tile>	
+
+									<v-list-tile>
+										<v-checkbox label="New account" v-model="checkbox"></v-checkbox>
+									</v-list-tile>
+								</v-form>
+
+								<v-divider></v-divider>			
+
+								<v-list-tile class="m-tl">
+									<v-btn color="blue-grey" dark >
+								      Let's Go
+								      <v-icon right dark>arrow_right</v-icon>
+								    </v-btn>
+								</v-list-tile>					
+						    </v-list>
+						</v-card>
+					</v-menu>	
+					
 				</v-toolbar-items>
 			</v-toolbar>
 
@@ -138,6 +170,15 @@
 				<v-content>
 					<v-container fluid fill-height>
 						<div>{{ testv }}</div>
+						
+							<div>
+							<v-switch v-model="connect" color="secondary"></v-switch>
+
+							<div v-if="!connect">!co</div>
+							<div v-else>co</div>
+							</div>
+
+
 					</v-container>
 				</v-content>
 			</main>
