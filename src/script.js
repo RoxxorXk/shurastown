@@ -13,7 +13,7 @@ new Vue({
 		cmod: true,
 		notif:69,
 		checkbox: false,
-		choice:3,	
+		choice:1,	
 		cnews:true,
 		d2:true,	
 		nbichat:5,
