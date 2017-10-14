@@ -26,7 +26,7 @@
 		<v-app dark id="inspire">
 			<v-navigation-drawer clipped persistent v-model="drawer" app>
 				<v-list dense>
-					<v-list-tile @click="">
+					<v-list-tile @click="choice=0">
 						<v-list-tile-action>
 							<v-icon>dashboard</v-icon>
 						</v-list-tile-action>
@@ -36,7 +36,7 @@
 						</v-list-tile-content>
 					</v-list-tile>
 
-					<v-list-tile @click="">
+					<v-list-tile @click="choice=1">
 						<v-list-tile-action>
 							<v-icon>fa-plus</v-icon>
 						</v-list-tile-action>
@@ -46,7 +46,7 @@
 						</v-list-tile-content>
 					</v-list-tile>
 
-					<v-list-tile @click="">
+					<v-list-tile @click="choice=2">
 						<v-list-tile-action >
 							<v-icon>fa-music</v-icon>
 						</v-list-tile-action>
@@ -56,7 +56,7 @@
 						</v-list-tile-content>
 					</v-list-tile>
 
-					<v-list-tile @click="">
+					<v-list-tile v-if="connect" @click="choice=3">
 						<v-list-tile-action >
 							<v-icon>fa-comments-o</v-icon>
 						</v-list-tile-action>
@@ -68,7 +68,7 @@
 				</v-list>
 			</v-navigation-drawer>
 
-			<v-toolbar dark app fixed clipped-left>
+			<v-toolbar dark app fixed clipped-left clipped-right>
 				<v-toolbar-side-icon class="s_offset" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
 				<v-toolbar-title class="s_offset" class="white--text">Shura's Town</v-toolbar-title>
 				<v-spacer></v-spacer>
@@ -87,10 +87,10 @@
 							<v-badge class="ico_off_txt" overlap>
       							<span slot="badge">{{notif}}</span>
 								<v-avatar  size="40px" style="margin-left: 15px;">
-									<img src="src/img/favicon.png" alt="ow_dev">
+									<img v-bind:src="userico" alt="ow_dev">
 								</v-avatar>
 							</v-badge>
-							<strong>Shura</strong> 
+							<strong>{{pseudo}}</strong> 
 
 						</v-btn>
 						
@@ -121,7 +121,11 @@
 								<v-divider></v-divider>
 
 								<v-list-tile>
+<<<<<<< HEAD
+									<v-list-tile-sub-title><v-btn  id="profil" flat @click="logout">Log Out</v-btn></v-list-tile-sub-title>
+=======
 									<v-list-tile-sub-title><v-btn  id="profil" flat @click="connect = !connect">Log Out</v-btn></v-list-tile-sub-title>
+>>>>>>> f21319076e48ea012fc0bb5444f638ab1738110b
 									<v-list-tile-sub-title><v-btn  id="profil" flat >My Account</v-btn></v-list-tile-sub-title>
 								</v-list-tile>
 						    </v-list>
@@ -146,9 +150,36 @@
 										<v-text-field label="Password" required type="password"></v-text-field>
 									</v-list-tile>	
 
+<<<<<<< HEAD
+									<div v-if="checkbox">
+										<v-list-tile>
+											<v-text-field label="Confirm Password" required type="password"></v-text-field>
+										</v-list-tile>	
+
+										<v-list-tile>
+											<v-text-field label="E-mail" required type="email"></v-text-field>
+										</v-list-tile>	
+
+										<v-list-tile>
+											<v-text-field label="Confirm E-mail" required type="email"></v-text-field>
+										</v-list-tile>	
+
+										<v-list-tile>
+											<v-checkbox label="Subscribe" v-model="cnews"></v-checkbox>
+										</v-list-tile>
+										
+									</div>
+
 									<v-list-tile>
 										<v-checkbox label="New account" v-model="checkbox"></v-checkbox>
 									</v-list-tile>
+
+
+=======
+									<v-list-tile>
+										<v-checkbox label="New account" v-model="checkbox"></v-checkbox>
+									</v-list-tile>
+>>>>>>> f21319076e48ea012fc0bb5444f638ab1738110b
 								</v-form>
 
 								<v-divider></v-divider>			
@@ -168,17 +199,45 @@
 
 			<main>
 				<v-content>
-					<v-container fluid fill-height>
+					<v-container fluid>
 						<div>{{ testv }}</div>
 						
 							<div>
 							<v-switch v-model="connect" color="secondary"></v-switch>
+<<<<<<< HEAD
+							<button @click="d2 = !d2">Drawer2 : {{d2}}</button>
+							</div>
+
+							<div v-if="choice===0">Img</div>
+							<div v-if="choice===1">News</div>
+							<div v-if="choice===2">Music</div>							
+							<div v-if="choice===3">Chat
+								<v-navigation-drawer light right permanent clipped :mini-variant="d2"  >
+									<v-list>
+										<v-list-tile v-for="img in images" @mouseenter="d2 = !d2" @mouseleave="d2 = !d2">
+											<v-list-tile-avatar>
+												<img  v-bind:src="img.pic" alt="ow_dev">
+											</v-list-tile-avatar>
+											<v-list-tile-title>Vous</v-list-tile-title>
+										</v-list-tile>
+									</v-list>
+								</v-navigation-drawer>
+
+									<v-form >
+										<v-text-field label="Write what you want..." fixed bottom>
+									</v-form>
+
+								
+							</div>
+
+=======
 
 							<div v-if="!connect">!co</div>
 							<div v-else>co</div>
 							</div>
 
 
+>>>>>>> f21319076e48ea012fc0bb5444f638ab1738110b
 					</v-container>
 				</v-content>
 			</main>
