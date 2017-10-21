@@ -35,3 +35,20 @@ a{
 .m-tl{
 	margin-top: 10px;
 }
+.m-btm{
+	margin-bottom: 10px;
+}
+.p-tdl{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.bottom{
+	display: block;
+	position:relative;
+}
+.m-btm2{
+	margin-bottom: 20px;
+}
+.g_offset{
+	margin:10px;
+}

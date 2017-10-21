@@ -2,8 +2,8 @@ new Vue({
 	el: '#app',
 	data:{
 		pseudo: "RoxxorXx",
-		userico: 'src/img/owl.png',
-
+		userico: ' src/usrpic/rox.png',
+		color:"dark",
 		drawer: false,
 		connect:false,
 		sbar:false,
@@ -18,10 +18,12 @@ new Vue({
 		d2:true,	
 		nbichat:5,
 		images:[
-			{ pic:' src/img/favicon.png'},
-			{ pic:' src/img/favicon.png'},
-			{ pic:' src/img/favicon.png'},
-			{ pic:' src/img/favicon.png'},
+			{ pic:' src/img/favicon.png', user:'Shurave'},
+			{ pic:' src/usrpic/rox.png', user:'RoxxorXx'},
+			{ pic:' src/usrpic/kay.png', user:'Kayslowyn'},
+			{ pic:' src/img/owl.png', user:"Admin"},
+			{ pic:' src/usrpic/lys.png', user:"Deathu Arisu"},
+			{ pic:' src/img/owl.png', user:"Default User"},
 		]
 
 	},
@@ -36,6 +38,10 @@ new Vue({
 		test: function() {
 			this.sbar = !this.sbar
 			this.seico = !this.seico
+		},
+		bdrawer: function(arg){
+			this.choice = arg
+			this.drawer = false
 		},
 
 	}

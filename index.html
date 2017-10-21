@@ -24,9 +24,21 @@
 <body>
 	<div id="app">
 		<v-app dark id="inspire">
+
+			<!--Left drawer-->
 			<v-navigation-drawer clipped persistent v-model="drawer" app>
 				<v-list dense>
-					<v-list-tile @click="choice=0">
+					<v-list-tile @click="bdrawer(4)">
+						<v-list-tile-action >
+							<v-icon>home</v-icon>
+						</v-list-tile-action>
+
+						<v-list-tile-content>
+							<v-list-tile-title>Home</v-list-tile-title>
+						</v-list-tile-content>
+					</v-list-tile>
+
+					<v-list-tile @click="bdrawer(0)">
 						<v-list-tile-action>
 							<v-icon>dashboard</v-icon>
 						</v-list-tile-action>
@@ -36,7 +48,7 @@
 						</v-list-tile-content>
 					</v-list-tile>
 
-					<v-list-tile @click="choice=1">
+					<v-list-tile @click="bdrawer(1)">
 						<v-list-tile-action>
 							<v-icon>fa-plus</v-icon>
 						</v-list-tile-action>
@@ -46,7 +58,7 @@
 						</v-list-tile-content>
 					</v-list-tile>
 
-					<v-list-tile @click="choice=2">
+					<v-list-tile @click="bdrawer(2)">
 						<v-list-tile-action >
 							<v-icon>fa-music</v-icon>
 						</v-list-tile-action>
@@ -56,7 +68,7 @@
 						</v-list-tile-content>
 					</v-list-tile>
 
-					<v-list-tile v-if="connect" @click="choice=3">
+					<v-list-tile v-if="connect" @click="bdrawer(3)">
 						<v-list-tile-action >
 							<v-icon>fa-comments-o</v-icon>
 						</v-list-tile-action>
@@ -67,7 +79,27 @@
 					</v-list-tile>
 				</v-list>
 			</v-navigation-drawer>
+			<!--end Left drawer-->
 
+			<!--Chat right drawer-->
+			<div v-if="choice===3" @mouseenter="d2 = !d2" @mouseleave="d2 = !d2">
+				<v-navigation-drawer dark light right permanent clipped app :mini-variant="d2">
+					<v-list>
+						<v-list-tile v-if="!d2" >Online Peoples</v-list-tile>
+						<v-divider class="m-btm"></v-divider>
+						<v-list-tile v-for="img in images"  class="m-tdl">
+							<v-list-tile-avatar>
+								<img  v-bind:src="img.pic" alt="ow_dev">
+							</v-list-tile-avatar>
+							<v-list-tile-title>{{img.user}}</v-list-tile-title>
+						</v-list-tile>
+
+					</v-list>
+				</v-navigation-drawer>
+			</div>	
+			<!--end Chat right drawer-->
+
+			<!--Header-->
 			<v-toolbar dark app fixed clipped-left clipped-right>
 				<v-toolbar-side-icon class="s_offset" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
 				<v-toolbar-title class="s_offset" class="white--text">Shura's Town</v-toolbar-title>
@@ -184,51 +216,80 @@
 					
 				</v-toolbar-items>
 			</v-toolbar>
+			<!--End Header-->
 
 			<main>
 				<v-content>
 					<v-container fluid>
 						<div>{{ testv }}</div>
-						
-							<div>
-							<v-switch v-model="connect" color="secondary"></v-switch>
-							<button @click="d2 = !d2">Drawer2 : {{d2}}</button>
-							</div>
+						<v-switch v-model="connect" color="secondary"></v-switch>
 
-							<div v-if="choice===0">Img</div>
-							<div v-if="choice===1">News</div>
-							<div v-if="choice===2">Music</div>							
+							<!-- draws part -->
+							<div v-if="choice===0">Img
+							</div>
+							<!-- End draws part -->
+
+							<!-- news part -->
+							<div v-if="choice===1">
+								<div  v-for="img in images" class="m-tdl">
+									<v-card dark class="white--text">
+										<v-card-text >
+											<div class="text-lg-right">10 comment - 16/10/2017</div>
+										</v-card-text>
+										<v-card-title primary-title>
+											 <div class="headline m-btm2">A news</div>
+											 <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ex ipsum, placerat non dui pharetra, dignissim mollis justo. Proin quis aliquet ante, quis rhoncus ex. Vestibulum sed finibus velit, condimentum fermentum mauris. Nam vitae justo vel ipsum vehicula congue. Quisque id pretium eros, a faucibus lorem... </div>
+										</v-card-title>
+										<v-card-actions>
+							                <v-btn flat dark>Read more</v-btn>
+							                <v-spacer></v-spacer>
+							                <div>
+							                	<v-btn icon v-if="connect">
+								                  <v-icon>favorite</v-icon>
+								                </v-btn>
+
+							                	<v-btn icon>
+								                  <v-icon>share</v-icon>
+								                </v-btn>
+							                </div>
+							            </v-card-actions>
+									</v-card>
+								</div>
+							</div>
+							<!-- end news part -->
+
+							<!-- music part -->
+							<div v-if="choice===2">Music
+							</div>
+							<!-- end music part -->
+
+							<!-- chat part -->
 							<div v-if="choice===3">Chat
-								<v-navigation-drawer light right permanent clipped :mini-variant="d2"  >
-									<v-list>
-										<v-list-tile v-for="img in images" @mouseenter="d2 = !d2" @mouseleave="d2 = !d2">
-											<v-list-tile-avatar>
-												<img  v-bind:src="img.pic" alt="ow_dev">
-											</v-list-tile-avatar>
-											<v-list-tile-title>Vous</v-list-tile-title>
-										</v-list-tile>
-									</v-list>
-								</v-navigation-drawer>
+								<v-form >
+								<div>
+									<v-text-field class="bottom" single-line hide-details v-model="testv" label="Write what you want...">
 
-									<v-form >
-										<v-text-field label="Write what you want..." fixed bottom>
-									</v-form>
-
-								
+								</div>
+								</v-form>
 							</div>
+							<!-- end chat part -->
 
 					</v-container>
 				</v-content>
 			</main>
 
-			<v-footer class="pa-3 white--text" dark fixed>
+			<!--Footer-->
+			<v-footer class="pa-3 white--text" dark fixed app>
 
+				<!-- socials networks -->
 				<a href="https://www.facebook.com/ShuraMurasaki/" target="_blank"><v-icon id="fb" class="social_ico" large>fa-facebook</v-icon></a>
 				<a href="https://www.instagram.com/shura_murasaki/" target="_blank"><v-icon id="ig" class="social_ico" large>fa-instagram</v-icon></a>
 				<a href="https://shuraxpheles.deviantart.com/" target="_blank"><v-icon id="da" class="social_ico" large>fa-deviantart</v-icon></a>
 				<a href="https://soundcloud.com/" target="_blank"><v-icon id="sc" class="social_ico" large>fa-soundcloud</v-icon></a>
 
 				<div><strong>Follow us !</strong></div>
+				<!-- end socials networks -->
+
 				<v-spacer></v-spacer>
 
 				<v-avatar class="ico_off_txt" size="34px">
@@ -237,6 +298,8 @@
 
 				<div id="creator"><strong><a href="http://owldev.fr" target="_blank">Power by Owl_Dev</a> - {{ new Date().getFullYear() }}</strong></div>
 			</v-footer>
+			<!--End Footer-->
+
 		</v-app>
 	</div>
 </body>
